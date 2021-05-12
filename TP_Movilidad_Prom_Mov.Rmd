@@ -8,7 +8,7 @@ editor_options:
 
 # COVID-19: Evolución del número de fallecimientos y la movilidad en Ciudad Autónoma de Buenos Aires  Marzo 2020/ Abril 2021
 
-El primer caso de COVID-19 en Argentina se detectó el 3 de marzo de 2020 y el 7 de marzo, el Ministerio de Salud confirmó la primera muerte causada por dicho virus. Pocos dias después, el 10 de marzo, la Organización Mundial de la Salud (OMS) declara COVID-19 como pandemia. 
+El primer caso de COVID-19 en Argentina se detectó el 3 de marzo de 2020 y el 7 de marzo, el Ministerio de Salud confirmó la primera muerte causada por dicho virus. Pocos dias después, el 10 de marzo, la Organización Mundial de la Salud (OMS) declaró COVID-19 como pandemia. 
 
 A raíz de esto, se establecieron medidas de restricción de la movilidad (ASPO) para control de la diseminación del virus. 
 
@@ -19,14 +19,14 @@ Métodos:
 Utilizamos RStudio para realizar un análisis exploratorio de datos y las manipulaciones que consideramos necesarias para obtener una visualización de los mismos.
 
 ```{r}
-# evitamos aparicion de warnings y mensajes en el HTML
+# evitamos aparición de warnings y mensajes en el HTML
 knitr::opts_chunk$set(echo = TRUE, warning=F, message=F)
 ```
 
 ## Importar Paquetes.
 Para comenzar, verificamos que estén instalados (e instalamos si no) los paquetes necesarios.
 
-Los nuevos paquetes deberán ser agregados al vector "packages_needed".
+Los nuevos paquetes deberán ser agregados al vector "paquetes".
 
 ```{r}
 
@@ -47,13 +47,13 @@ for (i in paquetes) {
 
 ```
 
-## carga y manipulacion de datos
+## Carga y manipulación de datos
 
-### movilidad
+### Movilidad
 
 Importamos la URL de Movilidad de Apple donde posteriormente se filtrará la tasa de movilidad de CABA de los caminantes.
 
-Como la URL de Apple se modifica dia a dia, usamos un mirror para descargar los datos.
+Como la URL de Apple se modifica día a día, usamos un mirror para descargar los datos.
 
 ```{r}
 mobility_url <- "https://github.com/ActiveConclusion/COVID19_mobility/raw/master/apple_reports/applemobilitytrends.csv"
@@ -62,12 +62,12 @@ mobility <- read_csv(mobility_url)
 
 Creamos un nuevo set de datos en el cual pasamos el set inicial del formato ancho al formato largo ( todas las columnas de fecha ) y finalmente, se crean las columnas nuevas "fecha" y "tasa" donde se almacenan los datos originales de las columnas de fecha. 
 
-Ademas, filtramos los datos, quedandonos unicamente con los correspondientes a argentina, en donde solo hay datos de CABA.
+Ademas, filtramos los datos, quedandonos únicamente con los correspondientes a los caminantes de Argentina, en donde sólo hay datos de CABA.
 
 ```{r}
 mobility %>%
   filter(country == "Argentina", transportation_type == "walking") %>%
-  # eliminamos columnas inutiles
+  # eliminamos columnas que no vamos a utilizar
   select(-c(geo_type, region, alternative_name, `sub-region`, country, transportation_type)) %>% 
   # pivoteamos la tabla, convirtiendo cada celda de los indices de movilidad,
   # en una fila.
@@ -76,7 +76,7 @@ mobility %>%
     names_to = "fecha",
     values_to = "tasa"
   ) %>% 
-  # arreglamos el formato de las fechas
+  # cambiamos el formato de las fechas
   mutate(fecha = parse_date(fecha)) -> mobility_caba
 ```
 
@@ -84,7 +84,7 @@ mobility %>%
 ### Datos de Fallecimientos
 
 Una vez terminado el *data wrangling* para la Movilidad, cargamos nuestros datos de fallecidos.
-Ahora se importa y se trabaja sólo con aquellos de fallecidos por COVID-19 en Buenos Aires.
+Ahora importamos y trabajamos sólo con aquellos de fallecidos por COVID-19 en Buenos Aires.
 
 Es importante verificar que la ruta sea correcta al correr el script.
 
@@ -282,7 +282,7 @@ u
 
 ### Observaciones Gráfico 1 (valores individuales de tasa de movilidad y fallecidos)
   
-Teniendo en cuenta que los datos que obtuvimos de la fuente de datos de Apple se limitan a aquellos usuarios del dispositivo, los cuales representan un porcentaje reducido de los ciudadanos de la Ciudad Autónoma de Buenos Aires y que, la calidad de datos de pacientes fallecidos por COVID-19 puede variar dependiendo de las fuentes utilizadas y disponibles al público, no se puede generalizar las observaciones.
+Teniendo en cuenta que los datos que obtuvimos de la fuente de datos de Apple se limitan a aquellos usuarios del dispositivo, los cuales representan un porcentaje reducido de los ciudadanos de la Ciudad Autónoma de Buenos Aires, y que la calidad de datos de pacientes fallecidos por COVID-19 puede variar dependiendo de las fuentes utilizadas y disponibles al público, no se puede generalizar las observaciones.
  
 A partir del gráfico de movilidad y fallecimientos en función del tiempo se ve que la movilidad se condice con la implementación de las medidas del ASPO, ya que se observa una caída muy significativa en dicha tasa  en la fecha de la implementación de las medidas. Seguido a esto, el incremento de la movilidad es paulatino. 
   

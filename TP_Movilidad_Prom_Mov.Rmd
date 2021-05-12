@@ -284,11 +284,11 @@ u
   
 Teniendo en cuenta que los datos que obtuvimos de la fuente de datos de Apple se limitan a aquellos usuarios del dispositivo, los cuales representan un porcentaje reducido de los ciudadanos de la Ciudad Autónoma de Buenos Aires, y que la calidad de datos de pacientes fallecidos por COVID-19 puede variar dependiendo de las fuentes utilizadas y disponibles al público, no se puede generalizar las observaciones.
  
-A partir del gráfico de movilidad y fallecimientos en función del tiempo se ve que la movilidad se condice con la implementación de las medidas del ASPO, ya que se observa una caída muy significativa en dicha tasa  en la fecha de la implementación de las medidas. Seguido a esto, el incremento de la movilidad es paulatino. 
+A partir del gráfico de movilidad y fallecimientos en función del tiempo se ve que la movilidad se condice con la implementación de las medidas del ASPO, ya que se observa una caída muy significativa en dicha tasa  en la fecha su de las medidas. Seguido a esto, el incremento de la movilidad es paulatino. 
   
-En Noviembre de 2020, con la implementación de las medidas DISPO, se observa cómo aumenta de movilidad. A su vez, la implementación de las medidas DISPO ocurre después de manifestarse una reducción en la cantidad de fallecidos. 
+En Noviembre de 2020, con la implementación de las medidas DISPO, se observa cómo aumenta de movilidad. A su vez, el comienzo de DISPO ocurre después de manifestarse una reducción en la cantidad de fallecidos. 
   
-En Abril de 2021, fecha en la que se implementaron por DNU nuevas restricciones a la movilidad, se identifica una reducción de la movilidad y los fallecimientos presentan una tendencia similar a la de Julio 2020.
+En Abril de 2021, fecha en la que se aplicaron por DNU nuevas restricciones a la movilidad, se identifica una reducción de la movilidad y los fallecimientos presentan una tendencia similar a la de Julio 2020.
 
 
 ### Observaciones Gráfico 2 (promedios móviles de tasa de movilidad y fallecidos)

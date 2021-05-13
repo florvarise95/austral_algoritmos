@@ -1,6 +1,6 @@
 ---
 title: "MCD - Comisión A - Algoritmos y Estructura de Datos - TP N°1"
-author: "Arias María del Pilar, Beldorati Germán, Bondarchuck María, Brankevich Paula, Jara María, Mancino Melina, May Germán, Pereyra Zorraquín Nicolás, Varise Florencia "
+author: "Arias María del Pilar, Beldorati Germán, Bondarchuk María, Brankevich Paula, Jara María, Mancino Melina, May Germán, Pereyra Zorraquín Nicolás, Varise Florencia "
 date: "04-21"
 editor_options: 
   chunk_output_type: console
